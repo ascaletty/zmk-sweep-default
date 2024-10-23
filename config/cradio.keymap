@@ -28,7 +28,8 @@
 
     bindings = <&kp>, <&kp>;
 
-    tapping-term-ms = <250>;
+    tapping-term-ms = <150>;
+    flavor = "tap-preferred";
 };
 
 &sk { ignore-modifiers; };
@@ -92,10 +93,10 @@
 
         default_layer {
             bindings = <
-&kp Q           &kp W           &kp E         &kp R               &kp T          &kp Y          &kp U               &kp I         &kp O           &kp P
-&mt LEFT_GUI A  &mt LEFT_ALT S  &mt LSHIFT D  &mt F LEFT_CONTROL  &kp G          &kp H          &mt LEFT_CONTROL J  &mt LSHIFT K  &mt LEFT_ALT L  &mt LEFT_WIN SEMICOLON
-&kp Z           &kp X           &kp C         &kp V               &kp B          &kp N          &kp M               &kp COMMA     &kp DOT         &kp SLASH
-                                              &lt 3 ENTER         &lt 2 SPACE    &kp BACKSPACE  &to SYM
+&mt ESCAPE Q    &kp W           &kp E         &kp R               &kp T        &kp Y          &kp U               &kp I         &kp O           &kp P
+&mt LEFT_GUI A  &mt LEFT_ALT S  &mt LSHIFT D  &mt F LEFT_CONTROL  &kp G        &kp H          &mt LEFT_CONTROL J  &mt LSHIFT K  &mt LEFT_ALT L  &mt LEFT_WIN SEMICOLON
+&kp Z           &kp X           &kp C         &kp V               &kp B        &kp N          &kp M               &kp COMMA     &kp DOT         &kp SLASH
+                                              &lt 3 ENTER         &kp SPACE    &kp BACKSPACE  &to SYM
             >;
         };
 
@@ -104,7 +105,7 @@
         numpad {
             bindings = <
 &none         &kp GRAVE          &kp LEFT_BRACKET   &kp LEFT_PARENTHESIS   &kp MINUS        &kp BSPC  &kp N7  &kp N8  &kp N9  &none
-&kp LSHIFT    &kp C_VOL_UP       &kp RIGHT_BRACKET  &kp RIGHT_PARENTHESIS  &kp EQUAL        &none     &kp N4  &kp N5  &kp N6  &kp LEFT_SHIFT
+&kp LSHIFT    &kp C_VOL_UP       &kp RIGHT_BRACKET  &kp RIGHT_PARENTHESIS  &kp EQUAL        &kp PLUS  &kp N4  &kp N5  &kp N6  &kp LEFT_SHIFT
 &kp IT_GREAT  &kp C_VOLUME_DOWN  &kp COMMA          &kp PERIOD             &kp SEMICOLON    &none     &kp N1  &kp N2  &kp N3  &kp IT_FSLH
                                                     &to 4                  &to 2            &to 3     &to 0
             >;
@@ -116,7 +117,7 @@
             bindings = <
 &kp ESC    &trans     &trans      &trans     &trans       &kp PG_UP     &kp HOME  &kp UP    &kp END    &kp CAPS
 &sk LALT   &sk LGUI   &sk LSHIFT  &sk LCTRL  &kp RALT     &kp PG_DN     &kp LEFT  &kp DOWN  &kp RIGHT  &kp DEL
-&kp LC(Z)  &kp LC(X)  &kp LC(C)   &kp TAB    &kp LC(V)    &kp LC(BSPC)  &kp BSPC  &trans    &trans     &trans
+&kp LC(Z)  &kp LC(X)  &kp LC(C)   &kp LC(V)  &kp TAB      &kp LC(BSPC)  &kp BSPC  &trans    &trans     &trans
                                   &to 0      &kp LCTRL    &kp ENTER     &to FNC
             >;
         };
@@ -136,10 +137,10 @@
 
         gaming_layer {
             bindings = <
-&kp IT_CARET      &kp IT_UNDER  &kp W        &kp IT_EUR   &kp IT_HASH         &none  &none  &none  &none  &none
-&kp LEFT_SHIFT    &kp A         &kp S        &kp D        &kt LEFT_SHIFT      &none  &none  &none  &none  &none
-&kt LEFT_CONTROL  &none         &kp IT_SECT  &kp IT_CCED  &kt LEFT_CONTROL    &none  &none  &none  &none  &none
-                                             &none        &to 0               &none  &none
+&kp IT_CARET      &kp Q  &kp W  &kp E  &kp R               &none  &none  &none  &none  &none
+&kp LEFT_SHIFT    &kp A  &kp S  &kp D  &kt LEFT_SHIFT      &none  &none  &none  &none  &none
+&kt LEFT_CONTROL  &kp Z  &kp X  &kp C  &kt LEFT_CONTROL    &none  &none  &none  &none  &none
+                                &none  &to 0               &none  &none
             >;
         };
 
@@ -148,7 +149,7 @@
         accent_layer {
             bindings = <
 &none        &none        &none        &kp IT_CEGR  &none          &none  &none  &none  &none  &none
-&kp IT_AGRV  &kp IT_IGRV  &kp IT_OGRV  &kp IT_EGRV  &kp IT_EACU    &none  &none  &none  &none  &none
+&kp IT_AGRV  &kp IT_IGRV  &kp IT_OGRV  &kp TILDE    &kp IT_EACU    &none  &none  &none  &none  &none
 &none        &none        &none        &kp IT_UGRV  &none          &none  &none  &none  &none  &none
                                        &none        &none          &none  &none
             >;
