@@ -146,7 +146,7 @@
 
         nav {
             bindings = <
-&trans           &kp ESCAPE      &mmv MOVE_UP    &kp LC(TAB)      &trans    &trans          &trans          &trans        &trans     &trans
+&trans           &kp ESCAPE      &mmv MOVE_UP    &trans      &trans    &trans          &trans          &trans        &trans     &trans
 &kp RC(LA(TAB))  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT  &trans
 &trans           &mkp RCLK       &trans          &mkp LCLK        &trans    &trans          &trans          &trans        &trans     &trans
                                                  &trans           &trans    &trans          &trans
