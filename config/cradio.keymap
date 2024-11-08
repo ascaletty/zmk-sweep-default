@@ -28,7 +28,7 @@
 
     bindings = <&kp>, <&kp>;
 
-    tapping-term-ms = <150>;
+    tapping-term-ms = <250>;
     flavor = "tap-preferred";
 };
 
@@ -55,7 +55,7 @@
         combo_accent {
             timeout-ms = <300>;
             key-positions = <32 33>;
-            bindings = <&mo ACCENT>;
+            bindings = <&mo 4>;
         };
 
         // internal-left & external-right thumb keys
@@ -63,7 +63,7 @@
         combo_sym2 {
             timeout-ms = <200>;
             key-positions = <31 33>;
-            bindings = <&to 2>;
+            bindings = <&to 1>;
         };
 
         // both left thumb keys
@@ -71,18 +71,52 @@
         combo_settings {
             timeout-ms = <300>;
             key-positions = <30 31>;
-            bindings = <&mo SETTINGS>;
+            bindings = <&mo 8>;
         };
 
         home_panic {
             bindings = <&to 0>;
             key-positions = <31 32>;
-            layers = <1 3 2 0 5 6>;
+            layers = <1 9 0 4 8 2 5 6>;
         };
 
         gamer_goo {
-            bindings = <&to 4>;
+            bindings = <&to 2>;
             key-positions = <30 33>;
+        };
+    };
+
+    behaviors {
+        new_behavior: new_behavior {
+            compatible = "zmk,behavior-hold-tap";
+            label = "NEW_BEHAVIOR";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <350>;
+            quick-tap-ms = <(-1)>;
+            require-prior-idle-ms = <(-1)>;
+            flavor = "tap-preferred";
+        };
+
+        underscore: underscore {
+            compatible = "zmk,behavior-mod-morph";
+            label = "UNDERSCORE";
+            bindings = <&kp SQT>, <&kp UNDERSCORE>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT)>;
+            keep-mods = <(MOD_LSFT)>;
+        };
+
+        dashandqoutes: dashandqoutes {
+            compatible = "zmk,behavior-mod-morph";
+            label = "DASHANDQOUTES";
+            bindings = <&kp MINUS>, <&kp DOUBLE_QUOTES>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT)>;
+            keep-mods = <(MOD_LSFT)>;
         };
     };
 
@@ -93,36 +127,30 @@
 
         default_layer {
             bindings = <
-&mt ESCAPE Q    &kp W           &kp E         &kp R               &kp T        &kp Y          &kp U               &kp I         &kp O           &kp P
-&mt LEFT_GUI A  &mt LEFT_ALT S  &mt LSHIFT D  &mt F LEFT_CONTROL  &kp G        &kp H          &mt LEFT_CONTROL J  &mt LSHIFT K  &mt LEFT_ALT L  &mt LEFT_WIN SEMICOLON
-&kp Z           &kp X           &kp C         &kp V               &kp B        &kp N          &kp M               &kp COMMA     &kp DOT         &kp SLASH
-                                              &lt 3 ENTER         &kp SPACE    &kp BACKSPACE  &to SYM
+&mt ESCAPE Q              &kp W  &kp E         &kp R               &kp T        &kp Y          &kp U               &kp I         &kp O    &kp P
+&new_behavior LEFT_WIN A  &kp S  &mt LSHIFT D  &mt LEFT_CONTROL F  &kp G        &kp H          &mt LEFT_CONTROL J  &mt LSHIFT K  &kp L    &new_behavior LEFT_GUI L
+&mt TAB Z                 &kp X  &kp C         &kp V               &kp B        &kp N          &kp M               &kp COMMA     &kp DOT  &kp SLASH
+                                               &lt 3 ENTER         &kp SPACE    &kp BACKSPACE  &lt 1 APOS
             >;
         };
-
-        // Numbers and high frequency symbols
 
         numpad {
             bindings = <
-&none         &kp GRAVE          &kp LEFT_BRACKET   &kp LEFT_PARENTHESIS   &kp MINUS        &kp BSPC  &kp N7  &kp N8  &kp N9  &none
-&kp LSHIFT    &kp C_VOL_UP       &kp RIGHT_BRACKET  &kp RIGHT_PARENTHESIS  &kp EQUAL        &kp PLUS  &kp N4  &kp N5  &kp N6  &kp LEFT_SHIFT
-&kp IT_GREAT  &kp C_VOLUME_DOWN  &kp COMMA          &kp PERIOD             &kp SEMICOLON    &none     &kp N1  &kp N2  &kp N3  &kp IT_FSLH
-                                                    &to 4                  &to 2            &to 3     &to 0
+&kp NUMBER_1      &kp NUMBER_2  &kp NUMBER_3       &kp NUMBER_4           &kp N5                  &kp NUMBER_6   &kp N7  &kp N8  &kp N9  &kp N0
+&kp LSHIFT        &kp TILDE     &kp RIGHT_BRACKET  &kp RIGHT_PARENTHESIS  &kp SEMICOLON           &kp EQUAL      &kp N4  &kp N5  &kp N6  &kp RSHIFT
+&kp LEFT_CONTROL  &kp LALT      &kp LEFT_BRACKET   &kp LEFT_PARENTHESIS   &kp NON_US_BACKSLASH    &kp MINUS      &kp N1  &kp N2  &kp N3  &kp PERIOD
+                                                   &to 2                  &mt ENTER SPACE         &kp BACKSPACE  &kp N0
             >;
         };
 
-        // Main modifiers and arrow keys
-
-        ext_layer {
+        nav {
             bindings = <
-&kp ESC    &trans     &trans      &trans     &trans       &kp PG_UP     &kp HOME  &kp UP    &kp END    &kp CAPS
-&sk LALT   &sk LGUI   &sk LSHIFT  &sk LCTRL  &kp RALT     &kp PG_DN     &kp LEFT  &kp DOWN  &kp RIGHT  &kp DEL
-&kp LC(Z)  &kp LC(X)  &kp LC(C)   &kp LC(V)  &kp TAB      &kp LC(BSPC)  &kp BSPC  &trans    &trans     &trans
-                                  &to 0      &kp LCTRL    &kp ENTER     &to FNC
+&trans  &trans  &trans  &trans  &trans    &trans          &trans          &trans        &trans     &trans
+&trans  &trans  &trans  &trans  &trans    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT  &trans
+&trans  &trans  &trans  &trans  &trans    &trans          &trans          &trans        &trans     &trans
+                        &trans  &trans    &trans          &trans
             >;
         };
-
-        // Function keys with modifiers
 
         fnc_layer {
             bindings = <
@@ -133,36 +161,57 @@
             >;
         };
 
-        // Low frequency symbols.
-
-        gaming_layer {
-            bindings = <
-&kp IT_CARET      &kp Q  &kp W  &kp E  &kp R               &none  &none  &none  &none  &none
-&kp LEFT_SHIFT    &kp A  &kp S  &kp D  &kt LEFT_SHIFT      &none  &none  &none  &none  &none
-&kt LEFT_CONTROL  &kp Z  &kp X  &kp C  &kt LEFT_CONTROL    &none  &none  &none  &none  &none
-                                &none  &to 0               &none  &none
-            >;
-        };
-
-        // Used to type regional accents.
-
         accent_layer {
             bindings = <
-&none        &none        &none        &kp IT_CEGR  &none          &none  &none  &none  &none  &none
+&to 5        &none        &none        &kp IT_CEGR  &none          &none  &none  &none  &none  &to 6
 &kp IT_AGRV  &kp IT_IGRV  &kp IT_OGRV  &kp TILDE    &kp IT_EACU    &none  &none  &none  &none  &none
 &none        &none        &none        &kp IT_UGRV  &none          &none  &none  &none  &none  &none
                                        &none        &none          &none  &none
             >;
         };
 
-        // Used to change the keyboard's settings.
+        solidworks {
+            bindings = <
+&trans          &trans     &trans     &trans  &trans       &trans         &kp N7   &kp N8  &kp N9  &trans
+&kp LEFT_SHIFT  &kp RS(D)  &kp RS(S)  &kp L   &trans       &trans         &kp N4   &kp N5  &kp N6  &trans
+&trans          &trans     &trans     &trans  &trans       &kp BACKSPACE  &kp N1   &kp N2  &kp N3  &trans
+                                      &to 0   &kp ENTER    &none          &kp DOT
+            >;
+        };
+
+        graphite {
+            bindings = <
+&kp B  &kp L  &kp D  &kp W      &kp Z        &underscore  &kp F      &kp O    &kp U           &kp J
+&kp N  &kp R  &kp T  &kp S      &kp G        &kp Y        &kp H      &kp A    &kp E           &kp I
+&kp Q  &kp X  &kp M  &kp C      &kp V        &kp K        &kp P      &kp DOT  &dashandqoutes  &kp FSLH
+                     &kp ENTER  &kp SPACE    &kp BSPC     &kp COMMA
+            >;
+        };
 
         settings_layer {
             bindings = <
 &bootloader  &none  &none  &bt BT_CLR  &bt BT_SEL 0    &bt BT_SEL 3  &none  &unstick  &none  &bootloader
-&none        &none  &none  &none       &bt BT_SEL 1    &bt BT_SEL 4  &none  &none     &none  &none
+&to 9        &none  &none  &none       &bt BT_SEL 1    &bt BT_SEL 4  &none  &none     &none  &none
 &none        &none  &none  &none       &bt BT_SEL 2    &bt BT_SEL 5  &none  &none     &none  &none
                            &none       &none           &none         &none
+            >;
+        };
+
+        gaming_layer {
+            bindings = <
+&kp TAB           &kp Q  &kp W  &kp E  &kp R               &none  &none  &none  &none  &none
+&kt LEFT_SHIFT    &kp A  &kp S  &kp D  &kt LEFT_SHIFT      &none  &none  &none  &none  &none
+&kt LEFT_CONTROL  &kp Z  &kp X  &kp C  &kt LEFT_CONTROL    &none  &none  &none  &none  &none
+                                &none  &kp SPACE           &none  &none
+            >;
+        };
+
+        ryan {
+            bindings = <
+&kp ESC           &trans        &trans     &trans     &trans           &kp PG_UP     &kp HOME  &kp UP    &kp END    &kp CAPS
+&kp LC(Z)         &kp RC(X)     &kp LC(C)  &kp LC(V)  &kp COMMA        &kp PG_DN     &kp LEFT  &kp DOWN  &kp RIGHT  &kp DEL
+&kp LC(LEFT_ALT)  &kp LEFT_WIN  &kp LC(C)  &kp LC(V)  &kp BACKSPACE    &kp LC(BSPC)  &kp BSPC  &trans    &trans     &trans
+                                           &to 0      &kp SPACE        &kp ENTER     &to 9
             >;
         };
     };
