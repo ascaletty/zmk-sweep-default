@@ -72,7 +72,7 @@
         combo_settings {
             timeout-ms = <300>;
             key-positions = <30 31>;
-            bindings = <&mo 8>;
+            bindings = <&mo 7>;
         };
 
         home_panic {
