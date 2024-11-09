@@ -35,6 +35,11 @@
 
 &sk { ignore-modifiers; };
 
+&mmv {
+    time-to-max-speed-ms = <210>;
+    acceleration-exponent = <1.5>;
+};
+
 / {
     macros {
         // sometimes my device thinks a modifier is being held down
@@ -118,15 +123,6 @@
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
             keep-mods = <(MOD_LSFT)>;
-        };
-
-        aposthrope: aposthrope {
-            compatible = "zmk,behavior-tap-dance";
-            label = "APOSTHROPE";
-            #binding-cells = <0>;
-            bindings = <&kp SQT>, <&to 1>, <&to 1>;
-
-            tapping-term-ms = <300>;
         };
     };
 
