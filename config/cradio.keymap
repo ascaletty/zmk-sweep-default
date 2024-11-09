@@ -81,7 +81,7 @@
             layers = <1 9 0 4 8 2 5 6>;
         };
 
-        gamer_goo {
+        nav {
             bindings = <&to 2>;
             key-positions = <30 33>;
         };
@@ -119,6 +119,15 @@
             mods = <(MOD_LSFT)>;
             keep-mods = <(MOD_LSFT)>;
         };
+
+        aposthrope: aposthrope {
+            compatible = "zmk,behavior-tap-dance";
+            label = "APOSTHROPE";
+            #binding-cells = <0>;
+            bindings = <&kp SQT>, <&to 1>, <&to 1>;
+
+            tapping-term-ms = <300>;
+        };
     };
 
     keymap {
@@ -128,10 +137,10 @@
 
         default_layer {
             bindings = <
-&mt ESCAPE Q         &kp W  &kp E         &kp R               &kp T        &kp Y          &kp U               &kp I         &kp O    &kp P
-&pinkyhm LEFT_WIN A  &kp S  &mt LSHIFT D  &mt LEFT_CONTROL F  &kp G        &kp H          &mt LEFT_CONTROL J  &mt LSHIFT K  &kp L    &pinkyhm LEFT_GUI L
-&mt TAB Z            &kp X  &kp C         &kp V               &kp B        &kp N          &kp M               &kp COMMA     &kp DOT  &kp SLASH
-                                          &lt 3 ENTER         &kp SPACE    &kp BACKSPACE  &lt 1 APOS
+&mt ESCAPE Q              &kp W  &kp E         &kp R               &kp T        &kp Y          &kp U               &kp I         &kp O    &kp P
+&new_behavior LEFT_WIN A  &kp S  &mt LSHIFT D  &mt LEFT_CONTROL F  &kp G        &kp H          &mt LEFT_CONTROL J  &mt LSHIFT K  &kp L    &new_behavior LEFT_WIN SEMICOLON
+&mt TAB Z                 &kp X  &kp C         &kp V               &kp B        &kp N          &kp M               &kp COMMA     &kp DOT  &kp SLASH
+                                               &lt 3 ENTER         &kp SPACE    &kp BACKSPACE  &aposthrope
             >;
         };
 
