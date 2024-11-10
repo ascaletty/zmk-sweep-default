@@ -4,15 +4,15 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: petejohanson
       url-base: https://github.com/petejohanson
-    - name: klausweiss
-      url-base: https://github.com/klausweiss
+    - name: ascaletty
+      url-base: https://github.com/ascaletty
   projects:
     - name: zmk
       remote: petejohanson
       revision: feat/pointers-move-scroll
       import: app/west.yml
-    - name: zmk
-      remote: klausweiss
-      revision: fix/adaptive-keys
+    - name: zmk-ant
+      remote: ascaletty
+      revision: main
   self:
     path: config
