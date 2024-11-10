@@ -7,7 +7,7 @@ manifest:
   projects:
     - name: zmk
       remote: ascaletty
-      revision: main
+      revision: mouse
       import: app/west.yml
   self:
     path: config
