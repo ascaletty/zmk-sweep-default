@@ -158,10 +158,10 @@
 
         graphite {
             bindings = <
-&kp B           &kp L  &kp D             &kp W               &kp Z        &underscore  &kp F                &kp O              &kp U           &kp J
-&mt LEFT_WIN N  &kp R  &mt LEFT_SHIFT T  &mt LEFT_CONTROL S  &kp G        &kp Y        &mt RIGHT_CONTROL H  &mt RIGHT_SHIFT A  &kp E           &mt LEFT_GUI I
-&kp Q           &kp X  &kp M             &kp C               &kp V        &kp K        &kp P                &kp DOT            &dashandqoutes  &slash
-                                         &kp ENTER           &kp SPACE    &kp BSPC     &comma
+&kp B                &kp L  &kp D             &kp W               &kp Z        &underscore  &kp F                &kp O              &kp U           &kp J
+&pinkyhm LEFT_WIN N  &kp R  &mt LEFT_SHIFT T  &mt LEFT_CONTROL S  &kp G        &kp Y        &mt RIGHT_CONTROL H  &mt RIGHT_SHIFT A  &kp E           &pinkyhm LEFT_GUI I
+&kp Q                &kp X  &kp M             &kp C               &kp V        &kp K        &kp P                &kp DOT            &dashandqoutes  &slash
+                                              &kp ENTER           &kp SPACE    &kp BSPC     &comma
             >;
         };
 
