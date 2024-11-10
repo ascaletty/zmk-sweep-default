@@ -58,13 +58,6 @@
         compatible = "zmk,combos";
 
         // both right thumb keys
-
-        combo_accent {
-            timeout-ms = <300>;
-            key-positions = <32 33>;
-            bindings = <&mo 4>;
-        };
-
         // internal-left & external-right thumb keys
 
         combo_sym2 {
@@ -78,18 +71,23 @@
         combo_settings {
             timeout-ms = <300>;
             key-positions = <30 31>;
-            bindings = <&mo 6>;
+            bindings = <&mo 4>;
         };
 
         home_panic {
             bindings = <&to 0>;
             key-positions = <31 32>;
-            layers = <1 0 4 7 2 5>;
+            layers = <1 6 2 0>;
         };
 
         nav {
             bindings = <&to 2>;
             key-positions = <30 33>;
+        };
+
+        fnc {
+            bindings = <&mo 3>;
+            key-positions = <32 33>;
         };
     };
 
@@ -132,6 +130,25 @@
             #binding-cells = <0>;
             bindings = <&kp SQT>, <&to 1>;
         };
+
+        comma: comma {
+            compatible = "zmk,behavior-tap-dance";
+            label = "COMMA";
+            #binding-cells = <0>;
+            bindings = <&kp COMMA>, <&to 1>;
+
+            tapping-term-ms = <200>;
+        };
+
+        slash: slash {
+            compatible = "zmk,behavior-mod-morph";
+            label = "SLASH";
+            bindings = <&kp SLASH>, <&kp LESS_THAN>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT)>;
+            keep-mods = <(MOD_LSFT)>;
+        };
     };
 
     keymap {
@@ -139,19 +156,19 @@
 
         // Base alpha layer
 
-        default_layer {
+        graphite {
             bindings = <
-&mt ESCAPE Q         &kp W  &kp E         &kp R               &kp T        &kp Y          &kp U               &kp I         &kp O    &kp P
-&pinkyhm LEFT_WIN A  &kp S  &mt LSHIFT D  &mt LEFT_CONTROL F  &kp G        &kp H          &mt LEFT_CONTROL J  &mt LSHIFT K  &kp L    &pinkyhm LEFT_WIN SEMICOLON
-&mt TAB Z            &kp X  &kp C         &kp V               &kp B        &kp N          &kp M               &kp COMMA     &kp DOT  &kp SLASH
-                                          &lt 3 ENTER         &kp SPACE    &kp BACKSPACE  &apostrophe
+&kp B           &kp L  &kp D             &kp W               &kp Z        &underscore  &kp F                &kp O              &kp U           &kp J
+&mt LEFT_WIN N  &kp R  &mt LEFT_SHIFT T  &mt LEFT_CONTROL S  &kp G        &kp Y        &mt RIGHT_CONTROL H  &mt RIGHT_SHIFT A  &kp E           &mt LEFT_GUI I
+&kp Q           &kp X  &kp M             &kp C               &kp V        &kp K        &kp P                &kp DOT            &dashandqoutes  &slash
+                                         &kp ENTER           &kp SPACE    &kp BSPC     &comma
             >;
         };
 
         numpad {
             bindings = <
 &kp NUMBER_1      &kp NUMBER_2  &kp NUMBER_3       &kp NUMBER_4           &kp N5                  &kp NUMBER_6   &kp N7  &kp N8  &kp N9  &kp N0
-&kp LSHIFT        &kp TILDE     &kp RIGHT_BRACKET  &kp RIGHT_PARENTHESIS  &kp SEMICOLON           &kp EQUAL      &kp N4  &kp N5  &kp N6  &kp RSHIFT
+&mt LSHIFT GRAVE  &kp QUESTION  &kp RIGHT_BRACKET  &kp RIGHT_PARENTHESIS  &kp SEMICOLON           &kp EQUAL      &kp N4  &kp N5  &kp N6  &kp RSHIFT
 &kp LEFT_CONTROL  &kp LALT      &kp LEFT_BRACKET   &kp LEFT_PARENTHESIS   &kp NON_US_BACKSLASH    &kp MINUS      &kp N1  &kp N2  &kp N3  &kp PERIOD
                                                    &to 2                  &mt ENTER SPACE         &kp BACKSPACE  &kp N0
             >;
@@ -171,34 +188,25 @@
 &kp F1    &kp F2    &kp F3      &kp F4     &kp F5      &kp F6   &kp F7   &kp F8           &kp F9  &kp F10
 &sk LALT  &sk LGUI  &sk LSHIFT  &sk LCTRL  &kp RALT    &kp F11  &kp F12  &kp PRINTSCREEN  &trans  &trans
 &none     &none     &none       &none      &none       &none    &none    &none            &none   &none
-                                &to 0      &to 0       &to 0    &none
-            >;
-        };
-
-        accent_layer {
-            bindings = <
-&trans       &none        &none        &kp IT_CEGR  &none          &none  &none  &none  &none  &to 5
-&kp IT_AGRV  &kp IT_IGRV  &kp IT_OGRV  &kp TILDE    &kp IT_EACU    &none  &none  &none  &none  &none
-&none        &none        &none        &kp IT_UGRV  &none          &none  &none  &none  &none  &none
-                                       &none        &none          &none  &none
-            >;
-        };
-
-        graphite {
-            bindings = <
-&kp B  &kp L  &kp D  &kp W      &kp Z        &underscore  &kp F      &kp O    &kp U           &kp J
-&kp N  &kp R  &kp T  &kp S      &kp G        &kp Y        &kp H      &kp A    &kp E           &kp I
-&kp Q  &kp X  &kp M  &kp C      &kp V        &kp K        &kp P      &kp DOT  &dashandqoutes  &kp FSLH
-                     &kp ENTER  &kp SPACE    &kp BSPC     &kp COMMA
+                                &none      &none       &none    &none
             >;
         };
 
         settings_layer {
             bindings = <
 &bootloader  &none  &none  &bt BT_CLR  &bt BT_SEL 0    &bt BT_SEL 3  &none  &unstick  &none  &bootloader
-&to 0        &none  &none  &none       &bt BT_SEL 1    &bt BT_SEL 4  &none  &none     &none  &none
+&to 6        &none  &none  &none       &bt BT_SEL 1    &bt BT_SEL 4  &none  &none     &none  &none
 &none        &none  &none  &none       &bt BT_SEL 2    &bt BT_SEL 5  &none  &none     &none  &none
                            &none       &none           &none         &none
+            >;
+        };
+
+        default_layer {
+            bindings = <
+&mt ESCAPE Q         &kp W  &kp E         &kp R               &kp T        &kp Y          &kp U               &kp I         &kp O    &kp P
+&pinkyhm LEFT_WIN A  &kp S  &mt LSHIFT D  &mt LEFT_CONTROL F  &kp G        &kp H          &mt LEFT_CONTROL J  &mt LSHIFT K  &kp L    &pinkyhm LEFT_WIN SEMICOLON
+&mt TAB Z            &kp X  &kp C         &kp V               &kp B        &kp N          &kp M               &kp COMMA     &kp DOT  &kp SLASH
+                                          &lt 3 ENTER         &kp SPACE    &kp BACKSPACE  &apostrophe
             >;
         };
 
