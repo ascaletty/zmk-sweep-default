@@ -5,7 +5,7 @@ manifest:
     - name: ascaletty
       url-base: https://github.com/ascaletty
   projects:
-    - name: zmk-mouse-antecedant
+    - name: zmk
       remote: ascaletty
       revision: main
       import: app/west.yml
