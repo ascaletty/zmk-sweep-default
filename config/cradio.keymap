@@ -50,7 +50,15 @@
             label = "ZM_unstick";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LSHIFT &kp RSHIFT &kp LCTRL &kp RCTRL &kp LALT &kp RALT &kp LGUI &kp RGUI>;
+            bindings = <&kp LSHIFT &kp LALT &kp RALT &kp LGUI &kp RGUI &kp ASTERISK>;
+        };
+
+        magica: magic {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp A &kp ASTERISK>, <&macro_press>, <&kp A &kp O>;
+
+            label = "MAGIC";
         };
     };
 
@@ -135,9 +143,9 @@
             compatible = "zmk,behavior-tap-dance";
             label = "COMMA";
             #binding-cells = <0>;
-            bindings = <&kp COMMA>, <&to 1>;
+            bindings = <&kp COMMA>, <&kp ASTERISK>, <&to 1>;
 
-            tapping-term-ms = <200>;
+            tapping-term-ms = <250>;
         };
 
         slash: slash {
