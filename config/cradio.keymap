@@ -56,7 +56,11 @@
         magica: magic {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp A &kp ASTERISK>, <&macro_press>, <&kp A &kp O>;
+            bindings =
+                <&kp A &kp ASTERISK>,
+                <&macro_press>,
+                <&macro_tap_time 300>,
+                <&kp A &kp O>;
 
             label = "MAGIC";
         };
