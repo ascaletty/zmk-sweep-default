@@ -9,7 +9,6 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/mouse.h>
 
 // Layer definitions
 
@@ -83,36 +82,38 @@
         combo_settings {
             timeout-ms = <300>;
             key-positions = <30 31>;
-            bindings = <&mo 4>;
+            bindings = <&mo 3>;
         };
 
         home_panic {
             bindings = <&to 0>;
             key-positions = <31 32>;
-            layers = <1 6 2 0>;
+            layers = <1 5 0>;
         };
 
         nav {
-            bindings = <&to 2>;
+            bindings = <&to 0>;
             key-positions = <30 33>;
         };
 
         fnc {
-            bindings = <&mo 3>;
+            bindings = <&mo 2>;
             key-positions = <32 33>;
         };
     };
 
     behaviors {
-	    ad_a: adaptive_a {
+        ad_a: adaptive_a {
             compatible = "zmk,behavior-antecedent-morph";
             label = "ADAPTIVE_A";
             #binding-cells = <0>;
             defaults = <&kp A>;
             bindings = <&kp U>, <&kp O>;
+
             antecedents = <Q Z>;
             max-delay-ms = <250>;
-	    };
+        };
+
         pinkyhm: pinkyhm {
             compatible = "zmk,behavior-hold-tap";
             label = "PINKYHM";
@@ -179,9 +180,9 @@
 
         graphite {
             bindings = <
-&kp B                &kp L  &kp D             &kp W               &kp Z        &underscore  &kp F                &kp O              &kp U           &kp J
-&pinkyhm LEFT_WIN N  &kp R  &mt LEFT_SHIFT T  &mt LEFT_CONTROL S  &kp G        &kp Y        &mt RIGHT_CONTROL H  &ad_a  &kp E           &pinkyhm LEFT_GUI I
-&kp Q                &kp X  &kp M             &kp C               &kp V        &kp K        &kp P                &kp DOT            &dashandqoutes  &slash
+&kp B                &kp L  &kp D             &kp W               &kp Z        &underscore  &kp F                &kp O    &kp U           &kp J
+&pinkyhm LEFT_WIN N  &kp R  &mt LEFT_SHIFT T  &mt LEFT_CONTROL S  &kp G        &kp Y        &mt RIGHT_CONTROL H  &ad_a    &kp E           &pinkyhm LEFT_GUI I
+&kp Q                &kp X  &kp M             &kp C               &kp V        &kp K        &kp P                &kp DOT  &dashandqoutes  &slash
                                               &kp ENTER           &kp SPACE    &kp BSPC     &comma
             >;
         };
@@ -191,16 +192,7 @@
 &kp NUMBER_1      &kp NUMBER_2  &kp NUMBER_3       &kp NUMBER_4           &kp N5                  &kp NUMBER_6   &kp N7  &kp N8  &kp N9  &kp N0
 &mt LSHIFT GRAVE  &kp QUESTION  &kp RIGHT_BRACKET  &kp RIGHT_PARENTHESIS  &kp SEMICOLON           &kp EQUAL      &kp N4  &kp N5  &kp N6  &kp RSHIFT
 &kp LEFT_CONTROL  &kp LALT      &kp LEFT_BRACKET   &kp LEFT_PARENTHESIS   &kp NON_US_BACKSLASH    &kp MINUS      &kp N1  &kp N2  &kp N3  &kp PERIOD
-                                                   &to 2                  &mt ENTER SPACE         &kp BACKSPACE  &kp N0
-            >;
-        };
-
-        nav {
-            bindings = <
-&trans           &kp ESCAPE      &mmv MOVE_UP    &kp LC(TAB)      &trans    &trans          &mkp RCLK       &mkp LCLK     &trans     &trans
-&kp RC(LA(TAB))  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT  &trans
-&trans           &mkp RCLK       &trans          &mkp LCLK        &trans    &trans          &trans          &trans        &trans     &trans
-                                                 &trans           &trans    &trans          &trans
+                                                   &to 0                  &mt ENTER SPACE         &kp BACKSPACE  &kp N0
             >;
         };
 
@@ -216,7 +208,7 @@
         settings_layer {
             bindings = <
 &bootloader  &none  &none  &bt BT_CLR  &bt BT_SEL 0    &bt BT_SEL 3  &none  &unstick  &none  &bootloader
-&to 6        &none  &none  &none       &bt BT_SEL 1    &bt BT_SEL 4  &none  &none     &none  &none
+&to 5        &none  &none  &none       &bt BT_SEL 1    &bt BT_SEL 4  &none  &none     &none  &none
 &none        &none  &none  &none       &bt BT_SEL 2    &bt BT_SEL 5  &none  &none     &none  &none
                            &none       &none           &none         &none
             >;
@@ -227,7 +219,7 @@
 &mt ESCAPE Q         &kp W  &kp E         &kp R               &kp T        &kp Y          &kp U               &kp I         &kp O    &kp P
 &pinkyhm LEFT_WIN A  &kp S  &mt LSHIFT D  &mt LEFT_CONTROL F  &kp G        &kp H          &mt LEFT_CONTROL J  &mt LSHIFT K  &kp L    &pinkyhm LEFT_WIN SEMICOLON
 &mt TAB Z            &kp X  &kp C         &kp V               &kp B        &kp N          &kp M               &kp COMMA     &kp DOT  &kp SLASH
-                                          &lt 3 ENTER         &kp SPACE    &kp BACKSPACE  &apostrophe
+                                          &lt 2 ENTER         &kp SPACE    &kp BACKSPACE  &apostrophe
             >;
         };
 
