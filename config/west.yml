@@ -2,15 +2,12 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: ssbb
-      url-base: https://github.com/ssbb
+    - name: ascaletty
+      url-base: https://github.com/ascaletty
   projects:
-    - name: zmk
-      remote: zmkfirmware
+    - name: zmk-ant
+      remote: ascaletty
       revision: main
       import: app/west.yml
-    - name: zmk-antecedent-morph
-      remote: ssbb
-      revision: v1
   self:
     path: config
