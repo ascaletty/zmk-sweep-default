@@ -1,11 +1,16 @@
 manifest:
   remotes:
-    - name: voidyourwarranty2
-      url-base: https://github.com/voidyourwarranty2
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+    - name: ssbb
+      url-base: https://github.com/ssbb
   projects:
     - name: zmk
-      remote: voidyourwarranty2
-      revision: devel-adaptive
+      remote: zmkfirmware
+      revision: main
       import: app/west.yml
+    - name: zmk-antecedent-morph
+      remote: ssbb
+      revision: v1
   self:
     path: config
