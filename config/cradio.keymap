@@ -152,7 +152,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "COMMA";
             #binding-cells = <0>;
-            bindings = <&kp COMMA>, <&numwordandlayer1>;
+            bindings = <&kp COMMA>, <&numwordandlayer1>, <&kp ASTERISK>;
 
             tapping-term-ms = <250>;
         };
