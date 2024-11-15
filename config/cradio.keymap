@@ -9,6 +9,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/mouse.h>
 
 // Layer definitions
 
@@ -52,16 +53,11 @@
             bindings = <&kp LSHIFT &kp LALT &kp RALT &kp LGUI &kp RGUI &kp ASTERISK>;
         };
 
-        magica: magic {
+        numwordandlayer1: numwordandlayer1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings =
-                <&kp A &kp ASTERISK>,
-                <&macro_press>,
-                <&macro_tap_time 300>,
-                <&kp A &kp O>;
-
-            label = "MAGIC";
+            bindings = <&numword &to 1>;
+            label = "NUMWORDANDLAYER1";
         };
     };
 
@@ -146,7 +142,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "COMMA";
             #binding-cells = <0>;
-            bindings = <&kp COMMA>, <&kp ASTERISK>, <&to 1>;
+            bindings = <&kp COMMA>, <&numwordandlayer1>;
 
             tapping-term-ms = <250>;
         };
@@ -159,6 +155,14 @@
             #binding-cells = <0>;
             mods = <(MOD_LSFT)>;
             keep-mods = <(MOD_LSFT)>;
+        };
+
+        numword: numword {
+            compatible = "zmk,behavior-caps-word";
+            label = "NUMWORD";
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_LALT|MOD_RCTL|MOD_RSFT|MOD_RALT)>;
+            continue-list = <NUMBER_1 NUMBER_2 NUMBER_3 NUMBER_4 NUMBER_5 NUMBER_6 NUMBER_7 NUMBER_8 NUMBER_9 NUMBER_0 PERIOD LEFT_PARENTHESIS RIGHT_PARENTHESIS RIGHT_BRACKET LEFT_BRACKET LEFT_BRACE RIGHT_BRACE QUESTION BACKSPACE GRAVE EXCLAMATION AT_SIGN POUND DOLLAR PERCENT CARET AMPERSAND ASTERISK>;
         };
     };
 
@@ -218,6 +222,15 @@
 &kt LEFT_SHIFT    &kp A  &kp S  &kp D  &kt LEFT_SHIFT      &none  &none  &none  &none  &none
 &kt LEFT_CONTROL  &kp Z  &kp X  &kp C  &kt LEFT_CONTROL    &none  &none  &none  &none  &none
                                 &none  &kp SPACE           &none  &none
+            >;
+        };
+
+        layer_6 {
+            bindings = <
+&trans       &trans          &mmv MOVE_UP    &kp LC(TAB)      &trans    &trans    &mkp LCLK     &mkp RCLK  &trans     &trans
+&kp RA(TAB)  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &trans    &kp LEFT  &kp UP_ARROW  &kp DOWN   &kp RIGHT  &trans
+&trans       &trans          &trans          &trans           &trans    &trans    &trans        &trans     &trans     &trans
+                                             &trans           &trans    &trans    &trans
             >;
         };
     };
