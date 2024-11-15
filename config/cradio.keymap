@@ -99,7 +99,17 @@
     };
 
     behaviors {
-        pinkyhm: pinkyhm {
+        ad_a: adaptive_a {
+            compatible = "zmk,behavior-antecedent-morph";
+            label = "ADAPTIVE_A";
+            #binding-cells = <0>;
+            defaults = <&kp A>;
+            bindings = <&kp U>
+            antecedents = <*>;
+            max-delay-ms = <250>;
+        };
+
+	    pinkyhm: pinkyhm {
             compatible = "zmk,behavior-hold-tap";
             label = "PINKYHM";
             bindings = <&kp>, <&kp>;
@@ -174,7 +184,7 @@
         graphite {
             bindings = <
 &kp B                &kp L  &kp D             &kp W               &kp Z        &underscore  &kp F                &kp O             &kp U           &kp J
-&pinkyhm LEFT_WIN N  &kp R  &mt LEFT_SHIFT T  &mt LEFT_CONTROL S  &kp G        &kp Y        &mt RIGHT_CONTROL H  &mt LEFT_SHIFT A  &kp E           &pinkyhm LEFT_GUI I
+&pinkyhm LEFT_WIN N  &kp R  &mt LEFT_SHIFT T  &mt LEFT_CONTROL S  &kp G        &kp Y        &mt RIGHT_CONTROL H  &ad_a  &kp E           &pinkyhm LEFT_GUI I
 &kp Q                &kp X  &kp M             &kp C               &kp V        &kp K        &kp P                &kp DOT           &dashandqoutes  &slash
                                               &kp ENTER           &kp SPACE    &kp BSPC     &comma
             >;
