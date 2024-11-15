@@ -1,10 +1,10 @@
 manifest:
   remotes:
-    - name: urob
-      url-base: https://github.com/urob
+    - name: ascaletty
+      url-base: https://github.com/ascaletty
   projects:
-    - name: zmk
-      remote: urob
+    - name: myzmk
+      remote: ascaletty
       revision: main
       import: app/west.yml
   self:
