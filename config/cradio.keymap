@@ -98,12 +98,14 @@
     };
 
     behaviors {
-        adapt_key: adapt_key {
+        behaviors {
+        ad_a: adaptive_a {
             compatible = "zmk,behavior-antecedent-morph";
+            label = "ADAPTIVE_A";
             #binding-cells = <0>;
             defaults = <&kp A>;
-            bindings = <&kp N>;
-            antecedents = <*>;
+            bindings = <&kp U>, <&kp O>;
+            antecedents = <Q Z>;
             max-delay-ms = <250>;
         };
 
@@ -182,7 +184,7 @@
         graphite {
             bindings = <
 &kp B                &kp L  &kp D             &kp W               &kp Z        &underscore  &kp F                &kp O       &kp U           &kp J
-&pinkyhm LEFT_WIN N  &kp R  &mt LEFT_SHIFT T  &mt LEFT_CONTROL S  &kp G        &kp Y        &mt RIGHT_CONTROL H  &adapt_key  &kp E           &pinkyhm LEFT_GUI I
+&pinkyhm LEFT_WIN N  &kp R  &mt LEFT_SHIFT T  &mt LEFT_CONTROL S  &kp G        &kp Y        &mt RIGHT_CONTROL H  &ad_a       &kp E           &pinkyhm LEFT_GUI I
 &kp Q                &kp X  &kp M             &kp C               &kp V        &kp K        &kp P                &kp DOT     &dashandqoutes  &slash
                                               &kp ENTER           &kp SPACE    &kp BSPC     &comma
             >;
